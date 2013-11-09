@@ -1,15 +1,15 @@
 package game;
 
-import org.lwjgl.opengl.Display;
 
 import engine.Core_Input;
+import engine.Core_Window;
 import engine.Objects.Camera;
 
 public class Player {
 	
 	private boolean moveFront,moveBack,moveLeft,moveRight;
 	private boolean rotateLeft,rotateRight;
-	private Camera camera = new Camera(70,(float) Display.getWidth()/(float) Display.getHeight(), 0.3f, 1000);
+	private Camera camera = new Camera(70,(float) Core_Window.getWidth()/(float) Core_Window.getHeight(), 0.3f, 1000);
 	
 	
 	

@@ -3,8 +3,8 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import engine.Objects.Cube;
+import engine.Objects.Grid;
 import engine.Objects.Pyramid;
 import engine.Objects.TDComponent;
 
@@ -15,7 +15,8 @@ public class Game {
 	boolean showFrame = true;
 	boolean canBuild = true;
 	boolean flag2 = true;
-	
+	boolean debug = true;
+	Grid grid = new Grid();
 	public Game()
 	{
 		cubes.add(new Cube(-2, 0,-10,1,0,0,0.5f));
@@ -61,6 +62,8 @@ public class Game {
 		}
 		else
 			flag2 = true;
+		if(player.isKeyDown("F6"))
+			debug = !debug;
 		
 		
 		
@@ -68,6 +71,8 @@ public class Game {
 	
 	public void render()
 	{
+		if(debug)
+			grid.Render();
 		for(TDComponent component : cubes)
 			component.Render();
 		if(showFrame)

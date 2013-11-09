@@ -1,8 +1,20 @@
 package engine;
 
+import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 
 public class Core_Input {
+	
+	public static void Init()
+	{
+		try {
+			Keyboard.create();
+		} catch (LWJGLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static boolean isKeyDown(String KEY)
 	{
 		int key;
@@ -30,6 +42,8 @@ public class Core_Input {
 			key = Keyboard.KEY_E; break;
 		case "Q":
 			key = Keyboard.KEY_Q; break;
+		case "F6":
+			key = Keyboard.KEY_F6; break;
 		default: key = 0;
 		}
 		return Keyboard.isKeyDown(key);

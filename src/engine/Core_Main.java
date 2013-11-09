@@ -11,6 +11,7 @@ import org.lwjgl.opengl.DisplayMode;
 import game.Game;
 
 public class Core_Main {
+
 	public static void Run()
 	{
 		Init();
@@ -45,7 +46,7 @@ public class Core_Main {
 	
 	private static void Init()
 	{
-		InitDisplay();
+		Core_Window.Init();
 		InitKeyboard();
 	}
 
@@ -59,23 +60,6 @@ public class Core_Main {
 		}
 	}
 
-	private static void InitDisplay() {
-		// TODO Auto-generated method stub
-		try {
-			Display.setDisplayMode(new DisplayMode(800, 600));
-			Display.setVSyncEnabled(true);
-			Display.sync(60);
-			Display.setTitle("Vacilation Engine");
-			Display.create();
-			
-		} catch (LWJGLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
-	public static void setTitle(String title)
-	{
-		Display.setTitle(title);
-	}
+
 }
