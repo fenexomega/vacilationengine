@@ -2,15 +2,17 @@ package engine.Objects;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class Grid {
+public class Grid
+{
 	int lines = 100;
-	float z , x;
+	float z, x;
+
 	public void Render()
 	{
-		
+
 		z = -lines;
 		x = -lines;
-		for(int i = -lines; i < lines; z = i++)
+		for (int i = -lines; i < lines; z = i++)
 		{
 			glPushMatrix();
 			{
@@ -24,7 +26,7 @@ public class Grid {
 			}
 			glPopMatrix();
 		}
-		for(int i = -lines; i < lines; x = i++)
+		for (int i = -lines; i < lines; x = i++)
 		{
 			glPushMatrix();
 			{
@@ -32,12 +34,12 @@ public class Grid {
 				glBegin(GL_LINE_STRIP);
 				{
 					glVertex3f(x, -1, lines);
-					glVertex3f(x, -1,-lines);
+					glVertex3f(x, -1, -lines);
 				}
 				glEnd();
 			}
 			glPopMatrix();
 		}
-		
+
 	}
 }

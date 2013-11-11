@@ -1,96 +1,94 @@
 package game;
 
+import org.lwjgl.opengl.Display;
 
-import engine.Core_Input;
-import engine.Core_Window;
+import engine.Input;
+import engine.Window;
 import engine.Objects.Camera;
 
-public class Player {
-	
-	private boolean moveFront,moveBack,moveLeft,moveRight;
-	private boolean rotateLeft,rotateRight;
-	private Camera camera = new Camera(70,(float) Core_Window.getWidth()/(float) Core_Window.getHeight(), 0.3f, 1000);
-	
-	
-	
-	
+public class Player
+{
+
+	private boolean moveFront, moveBack, moveLeft, moveRight;
+	private boolean rotateLeft, rotateRight;
+	private Camera camera = new Camera(70, (float) Window.getWidth()
+			/ (float) Window.getHeight(), 0.3f, 1000);
+
 	public void Update()
 	{
 		processInput();
 		camera.usePespective();
-		
+
 	}
-	
+
 	public void canMove(boolean b)
 	{
 		camera.setMovable(b);
 	}
-	
-	public void move(float x, float y, float z,float rx, float ry, float rz)
+
+	public void move(float x, float y, float z, float rx, float ry, float rz)
 	{
 		camera.moveTo(x, y, z, rx, ry, rz);
 	}
-	
-	
-	
+
 	private void processInput()
 	{
-		moveFront = Core_Input.isKeyDown("W");
-		moveBack = Core_Input.isKeyDown("S");
-		moveLeft = Core_Input.isKeyDown("A");
-		moveRight = Core_Input.isKeyDown("D");
-		
-		rotateLeft = Core_Input.isKeyDown("LEFT");
-		rotateRight = Core_Input.isKeyDown("RIGHT");
-		
-		if(moveFront)
-			camera.move(0.1f,1);
-		if(moveBack)
-			camera.move(-0.1f,1);
-		if(moveLeft)
-			camera.move(0.1f,0);
-		if(moveRight)
-			camera.move(-0.1f,0);
-		if(rotateLeft)
-			camera.rotateY(-1f);
-		if(rotateRight)
-			camera.rotateY(1f);
+		moveFront = Input.getKeyPressed(Input.KEY_W);
+		moveBack = Input.getKeyPressed(Input.KEY_S);
+		moveLeft = Input.getKeyPressed(Input.KEY_A);
+		moveRight = Input.getKeyPressed(Input.KEY_D);
+ 
+//		rotateLeft = 
+		rotateRight = Input.getKeyPressed(Input.KEY_RIGHT);
+
+		if (moveFront)
+			camera.move(0.1f, 1);
+		if (moveBack)
+			camera.move(-0.1f, 1);
+		if (moveLeft)
+			camera.move(0.1f, 0);
+		if (moveRight)
+			camera.move(-0.1f, 0);
+			camera.rotateY((Input.getMousePosition().getX() - Display.getWidth()/2)/5);
+		Input.MouseToCenter();
 	}
+
 	
-	public boolean isKeyDown(String string)
+
+	public float getX()
 	{
-		return Core_Input.isKeyDown(string);
-	}
-	
-	public float getX() {
 		// TODO Auto-generated method stub
 		return camera.getX();
 	}
-	
-	public float getY() {
+
+	public float getY()
+	{
 		// TODO Auto-generated method stub
 		return camera.getY();
 	}
-	
-	public float getZ() {
+
+	public float getZ()
+	{
 		// TODO Auto-generated method stub
 		return camera.getZ();
 	}
 
-
-
-	public float getRx() {
+	public float getRx()
+	{
 		// TODO Auto-generated method stub
 		return camera.getRx();
 	}
-	public float getRy() {
+
+	public float getRy()
+	{
 		// TODO Auto-generated method stub
 		return camera.getRy();
 	}
-	public float getRz() {
+
+	public float getRz()
+	{
 		// TODO Auto-generated method stub
 		return camera.getRz();
 	}
-
 
 }
