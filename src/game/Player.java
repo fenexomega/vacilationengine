@@ -10,7 +10,6 @@ public class Player
 {
 
 	private boolean moveFront, moveBack, moveLeft, moveRight;
-	private boolean rotateLeft, rotateRight;
 	private Camera camera = new Camera(70, (float) Window.getWidth()
 			/ (float) Window.getHeight(), 0.3f, 1000);
 
@@ -38,8 +37,7 @@ public class Player
 		moveLeft = Input.getKeyPressed(Input.KEY_A);
 		moveRight = Input.getKeyPressed(Input.KEY_D);
  
-//		rotateLeft = 
-		rotateRight = Input.getKeyPressed(Input.KEY_RIGHT);
+
 
 		if (moveFront)
 			camera.move(0.1f, 1);
@@ -49,7 +47,9 @@ public class Player
 			camera.move(0.1f, 0);
 		if (moveRight)
 			camera.move(-0.1f, 0);
-			camera.rotateY((Input.getMousePosition().getX() - Display.getWidth()/2)/5);
+		
+		camera.rotateY((Input.getMousePosition().getX() - Display.getWidth()/2)/5);
+		
 		Input.MouseToCenter();
 	}
 
