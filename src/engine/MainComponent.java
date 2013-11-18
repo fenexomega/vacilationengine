@@ -31,11 +31,12 @@ public class MainComponent
 	private static void Run()
 	{
 		// TODO Auto-generated method stub
-		
+		Input.MouseToCenter();
 		isRunning = true;
 
 		long lastTime = Time.getTime();
 		double unprocessedTime = 0;
+		
 		
 		while (isRunning)
 		{
@@ -46,7 +47,7 @@ public class MainComponent
 			lastTime = startTime;
 			
 			unprocessedTime += passedTime / (double) Time.SECOND;
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			RenderUtil.clearScreen();
 			glLoadIdentity();
 			
 			Input.update();
@@ -109,8 +110,11 @@ public class MainComponent
 
 	private static void Init()
 	{
+		
 		Window.Init();
 		Input.Init();
+		RenderUtil.initGraphics();
+
 	}
 
 }

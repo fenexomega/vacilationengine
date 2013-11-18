@@ -9,7 +9,7 @@ import engine.Objects.Camera;
 public class Player
 {
 
-	private boolean moveFront, moveBack, moveLeft, moveRight;
+	private boolean moveFront, moveBack, moveLeft, moveRight, crounch;
 	private Camera camera = new Camera(70, (float) Window.getWidth()
 			/ (float) Window.getHeight(), 0.3f, 1000);
 
@@ -36,7 +36,7 @@ public class Player
 		moveBack = Input.getKeyPressed(Input.KEY_S);
 		moveLeft = Input.getKeyPressed(Input.KEY_A);
 		moveRight = Input.getKeyPressed(Input.KEY_D);
- 
+		crounch = Input.getKeyPressed(Input.KEY_LCONTROL);
 
 
 		if (moveFront)
@@ -48,7 +48,13 @@ public class Player
 		if (moveRight)
 			camera.move(-0.1f, 0);
 		
+		if(crounch)
+			camera.setY(0.5f);
+		else
+			camera.setY(0);
+		
 		camera.rotateY((Input.getMousePosition().getX() - Display.getWidth()/2)/5);
+		camera.rotateX(-(Input.getMousePosition().getY() - Display.getHeight()/2)/3);
 		
 		Input.MouseToCenter();
 	}

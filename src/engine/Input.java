@@ -24,6 +24,9 @@ public class Input
 	public static final int KEY_F4 = Keyboard.KEY_F4 ;
 	public static final int KEY_F5 = Keyboard.KEY_F5 ;
 	public static final int KEY_F6 = Keyboard.KEY_F6 ;
+	public static final int KEY_RCONTROL = Keyboard.KEY_RCONTROL ;
+	public static final int KEY_LCONTROL = Keyboard.KEY_LCONTROL ;
+
 	
 	
 	

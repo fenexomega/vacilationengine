@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Input;
+import engine.RenderUtil;
 import engine.Objects.Cube;
 import engine.Objects.Grid;
 import engine.Objects.Pyramid;
@@ -17,6 +18,7 @@ public class Game
 	boolean canBuild = true;
 	boolean debug = true;
 	Grid grid = new Grid();
+	float cubex, cubey, cubez;
 
 	public Game()
 	{
@@ -24,30 +26,23 @@ public class Game
 		cubes.add(new Pyramid(2, 0, -10, 0, 1, 0));
 		player.canMove(true);
 		Input.MouseToggleDesappear();
+		
+
 	}
 
 	public void Update()
 	{
+		cubex = (float) (-player.getX() - 4f * Math.cos(Math.toRadians(player.getRy() + 90)) * Math.cos(Math.toRadians(player.getRx())));
+		cubey =  0;
+		cubez = (float) (-player.getZ() - 4f * Math.sin(Math.toRadians(player.getRy() + 90)) * Math.cos(Math.toRadians(player.getRx())));
+		
 
 		player.Update();
 		if (canBuild)
 		{
 			if (Input.getMouseDown(0))
-			{
-
-
-				cubes.add(new Cube((float) (-player.getX() - 3f * Math
-						.cos(Math.toRadians(player.getRy() + 90))), player
-						.getY(), (float) (-player.getZ() - 3f * Math
-								.sin(Math.toRadians(player.getRy() + 90))), 1, 1,
-								1, 0.5f));
-				cubes.add(new Cube((float) (-player.getX() - 3f * Math
-						.cos(Math.toRadians(player.getRy() + 90))), player
-						.getY(), (float) (-player.getZ() - 3f * Math
-								.sin(Math.toRadians(player.getRy() + 90))), 1, 1,
-								1, 0.5f));
-				System.out.println(Input.getMousePosition().toString());
-
+			{				
+				cubes.add(new Cube( cubex, cubey,cubez, 1, 1, 1, 0.5f));
 			}
 		}
 		if (Input.getKeyDown(Input.KEY_Q))
@@ -79,15 +74,14 @@ public class Game
 
 	public void render()
 	{
+		
+		
 		if (debug)
 			grid.Render();
 		for (TDComponent component : cubes)
 			component.Render();
 		if (showFrame)
-			Cube.RenderWireFrame((float) (-player.getX() - 3f * Math.cos(Math
-					.toRadians(player.getRy() + 90))), player.getY(),
-					(float) (-player.getZ() - 3f * Math.sin(Math
-							.toRadians(player.getRy() + 90))), 1f, 1f, 1f, 0.5f);
+			Cube.RenderWireFrame(cubex, cubey,cubez, 1, 1, 1, 0.5f);
 	}
 
 }

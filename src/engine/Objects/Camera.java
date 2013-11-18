@@ -2,6 +2,7 @@ package engine.Objects;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.util.glu.GLU.*;
+import engine.RenderUtil;
 
 public class Camera extends TDComponent
 {
@@ -33,8 +34,10 @@ public class Camera extends TDComponent
 
 	private void initPespective()
 	{
+		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
+		RenderUtil.renderCrosshair();
 		gluPerspective(fov, aspect, zNear, zFar);
 		glMatrixMode(GL_MODELVIEW);
 
@@ -106,7 +109,17 @@ public class Camera extends TDComponent
 	{
 		if (!canMove)
 			return;
+	
 		ry += amt;
+	}
+	
+	public void rotateX(float amt)
+	{
+		if (!canMove)
+			return;
+		if(!(Math.abs(rx + amt) > 90))
+			rx += amt;
+		
 	}
 
 	public void move(float amt, float dx)
@@ -116,7 +129,8 @@ public class Camera extends TDComponent
 		z += amt * Math.sin(Math.toRadians(ry + 90 * dx));
 		x += amt * Math.cos(Math.toRadians(ry + 90 * dx));
 	}
-
+	
+	
 	public void moveTo(float x, float y, float z, float rx, float ry, float rz)
 	{
 		this.x = x;
