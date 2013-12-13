@@ -26,9 +26,8 @@ public class Input
 	public static final int KEY_F6 = Keyboard.KEY_F6 ;
 	public static final int KEY_RCONTROL = Keyboard.KEY_RCONTROL ;
 	public static final int KEY_LCONTROL = Keyboard.KEY_LCONTROL ;
+	public static final int KEY_ESCAPE = Keyboard.KEY_ESCAPE ;
 
-	
-	
 	
 	
 	public static final int NUM_KEYCODES = 256;

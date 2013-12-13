@@ -1,5 +1,6 @@
 package engine.Objects;
 
+
 public abstract class TDComponent
 {
 	protected float x, y, z;

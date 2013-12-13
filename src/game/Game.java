@@ -1,5 +1,7 @@
 package game;
 
+import engine.Objects.TDComponent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,6 @@ import engine.RenderUtil;
 import engine.Objects.Cube;
 import engine.Objects.Grid;
 import engine.Objects.Pyramid;
-import engine.Objects.TDComponent;
 
 public class Game
 {
@@ -33,7 +34,7 @@ public class Game
 	public void Update()
 	{
 		cubex = (float) (-player.getX() - 4f * Math.cos(Math.toRadians(player.getRy() + 90)) * Math.cos(Math.toRadians(player.getRx())));
-		cubey =  0;
+		cubey = 0 ; // (float) - Math.tan(Math.toRadians(player.getRx()));
 		cubez = (float) (-player.getZ() - 4f * Math.sin(Math.toRadians(player.getRy() + 90)) * Math.cos(Math.toRadians(player.getRx())));
 		
 

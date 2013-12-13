@@ -59,14 +59,16 @@ public class MainComponent
 				
 				unprocessedTime -= frameTime;
 				frameCounter += passedTime;
-				if (Window.isCloseRequested())
+				if (Window.isCloseRequested() || Input.getKey(Input.KEY_ESCAPE))
 					stop();
 				Time.setDelta(frameTime);
 				
 				if(frameCounter >= Time.SECOND)
 				{
+					System.out.println(frames);
 					frames = 0;
 					frameCounter = 0;
+					
 				}
 				frames++;
 			}
